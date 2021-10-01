@@ -4,9 +4,9 @@ export const initialState = {
       id: 1,
       User: {
         id: 1,
-        nickname: 'zerocho',
+        nickname: '제로초',
       },
-      content: '첫 번째 게시글 #해시태그 #익스프레스',
+      content: '첫 번째 게시글 #해시태그',
       Images: [
         {
           src: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
@@ -23,13 +23,13 @@ export const initialState = {
           User: {
             nickname: 'nero',
           },
-          content: 'very good',
+          content: '우와 개정판이 나왔군요~',
         },
         {
           User: {
             nickname: 'hero',
           },
-          content: '너무 대단해요',
+          content: '얼른 사고싶어요~',
         },
       ],
     },
