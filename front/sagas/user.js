@@ -12,7 +12,6 @@ import {
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
 } from '../reducers/user';
-import Signup from '../pages/signup';
 
 function logInAPI(data) {
   return axios.post('/api/login', data);

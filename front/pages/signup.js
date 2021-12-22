@@ -57,7 +57,7 @@ const Signup = () => {
       </Head>
       <Form onFinish={onSubmit}>
         <div>
-          <label htmlFor="user-email">d</label>
+          <label htmlFor="user-email">email</label>
           <br />
           <Input name="user-email" type="email" value={email} required onChange={onChangeEmail} />
         </div>
