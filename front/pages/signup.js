@@ -56,12 +56,7 @@ const Signup = () => {
         <div>
           <label htmlFor="user-id">닉네임</label>
           <br />
-          <Input
-            name="user-id"
-            value={nickname}
-            required
-            onChange={onChangeNickname}
-          />
+          <Input name="user-id" value={nickname} required onChange={onChangeNickname} />
         </div>
         <div>
           <label htmlFor="user-id">비밀번호</label>
@@ -84,9 +79,7 @@ const Signup = () => {
             required
             onChange={onChangePasswordCheck}
           />
-          {passwordError && (
-            <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
-          )}
+          {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
         </div>
         <div>
           <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>
