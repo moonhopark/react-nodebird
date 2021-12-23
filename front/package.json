@@ -12,6 +12,7 @@
     "@ant-design/icons": "^4.6.2",
     "antd": "^4.16.11",
     "axios": "^0.24.0",
+    "immer": "^9.0.7",
     "next": "^11.0.1",
     "next-redux-wrapper": "^7.0.5",
     "prop-types": "^15.7.2",
