@@ -23,6 +23,20 @@ module.exports = (sequelize, DataTypes) => {
       collate: 'utf8_general_ci', // 한글 저장
     }
   );
-  User.associate = (db) => {};
+  User.associate = (db) => {
+    db.User.hasMany(db.Post);
+    db.User.hasMany(db.Comment);
+    db.User.belongstoMany(db.Post, { through: 'Like', as: 'Liked' });
+    db.User.belongstoMany(db.Post, {
+      through: 'Follow',
+      as: 'Followers',
+      foreignKey: 'FollowingId',
+    });
+    db.User.belongstoMany(db.Post, {
+      through: 'Follow',
+      as: 'Followings',
+      foreignKey: 'FollowerId',
+    });
+  };
   return User;
 };
