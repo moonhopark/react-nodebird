@@ -52,17 +52,25 @@ export const UNFOLLOW_FAILURE = 'UNFOLLOW_FAILURE';
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
 
-const dummyUser = data => ({
+const dummyUser = (data) => ({
   ...data,
   nickname: '제로초',
   id: 1,
   Posts: [{ id: 1 }],
-  Followings: [{ nickname: '부기초' }, { nickname: 'Chanho Lee' }, { nickname: 'neue zeal' }],
-  Followers: [{ nickname: '부기초' }, { nickname: 'Chanho Lee' }, { nickname: 'neue zeal' }],
+  Followings: [
+    { nickname: '부기초' },
+    { nickname: 'Chanho Lee' },
+    { nickname: 'neue zeal' },
+  ],
+  Followers: [
+    { nickname: '부기초' },
+    { nickname: 'Chanho Lee' },
+    { nickname: 'neue zeal' },
+  ],
 });
 
 // action creator
-export const loginRequestAction = data => {
+export const loginRequestAction = (data) => {
   return {
     type: LOG_IN_REQUEST,
     data,
@@ -76,7 +84,7 @@ export const logoutRequestAction = () => {
 };
 
 const reducer = (state = initialState, action) => {
-  return produce(state, draft => {
+  return produce(state, (draft) => {
     switch (action.type) {
       case FOLLOW_REQUEST:
         draft.followLoading = true;
@@ -100,7 +108,9 @@ const reducer = (state = initialState, action) => {
       case UNFOLLOW_SUCCESS:
         draft.unfollowLoading = false;
         draft.unfollowDone = true;
-        draft.me.Followings = draft.me.Followings.filter(v => v.id !== action.data);
+        draft.me.Followings = draft.me.Followings.filter(
+          (v) => v.id !== action.data
+        );
         break;
       case UNFOLLOW_FAILURE:
         draft.unfollowLoading = false;
@@ -114,7 +124,7 @@ const reducer = (state = initialState, action) => {
       case LOG_IN_SUCCESS:
         draft.logInLoading = false;
         draft.logInDone = true;
-        draft.me = dummyUser(action.data);
+        draft.me = action.data;
         break;
       case LOG_IN_FAILURE:
         draft.logInLoading = false;
@@ -158,7 +168,7 @@ const reducer = (state = initialState, action) => {
       //   },
       // };
       case REMOVE_POST_OF_ME:
-        draft.me.Post = draft.me.Posts.filter(v => v.id !== action.data);
+        draft.me.Post = draft.me.Posts.filter((v) => v.id !== action.data);
         break;
       // return {
       //   ...state,
