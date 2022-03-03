@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false, // 필수
         unique: true, // 고유한 값
       },
-      nicname: {
+      nickname: {
         type: DataTypes.STRING(30),
         allowNull: false,
       },

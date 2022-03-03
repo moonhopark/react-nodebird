@@ -62,7 +62,7 @@ function signUpAPI(data) {
   return axios.post('http://localhost:3065/user', data);
 }
 
-function* signUp() {
+function* signUp(action) {
   try {
     const result = yield call(signUpAPI, action.data);
     console.log(result);
@@ -70,6 +70,7 @@ function* signUp() {
       type: SIGN_UP_SUCCESS,
     });
   } catch (err) {
+    console.error(error);
     yield put({
       type: SIGN_UP_FAILURE,
       error: err.response.data,
