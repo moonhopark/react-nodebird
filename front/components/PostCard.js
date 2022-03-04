@@ -17,18 +17,18 @@ import FollowButton from './FollowButton';
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
-  const { removePostLoading } = useSelector(state => state.post);
+  const { removePostLoading } = useSelector((state) => state.post);
   const [liked, setLiked] = useState(false);
   const [commentFormOpned, setCommentFormOpned] = useState(false);
 
-  const id = useSelector(state => state.user.me?.id);
+  const id = useSelector((state) => state.user.me?.id);
 
   const onToggleLike = useCallback(() => {
-    setLiked(prev => !prev);
+    setLiked((prev) => !prev);
   }, []);
 
   const onToggleComment = useCallback(() => {
-    setCommentFormOpned(prev => !prev);
+    setCommentFormOpned((prev) => !prev);
   }, []);
 
   const onRemovePost = useCallback(() => {
@@ -43,21 +43,29 @@ const PostCard = ({ post }) => {
       <Card
         cover={post.Images[0] && <PostImages images={post.Images} />}
         actions={[
-          <RetweetOutlined key="retweet" />,
+          <RetweetOutlined key='retweet' />,
           liked ? (
-            <HeartTwoTone twoToneColor="#eb2f96" key="heart" onClick={onToggleLike} />
+            <HeartTwoTone
+              twoToneColor='#eb2f96'
+              key='heart'
+              onClick={onToggleLike}
+            />
           ) : (
-            <HeartOutlined key="heart" onClick={onToggleLike} />
+            <HeartOutlined key='heart' onClick={onToggleLike} />
           ),
-          <MessageOutlined key="comment" onClick={onToggleComment} />,
+          <MessageOutlined key='comment' onClick={onToggleComment} />,
           <Popover
-            key="ellipsis"
+            key='ellipsis'
             content={
               <Button.Group>
                 {id && post.User.id === id ? (
                   <>
                     <Button>수정</Button>
-                    <Button type="danger" onClick={onRemovePost} loading={removePostLoading}>
+                    <Button
+                      type='danger'
+                      onClick={onRemovePost}
+                      loading={removePostLoading}
+                    >
                       삭제
                     </Button>
                   </>
@@ -83,9 +91,9 @@ const PostCard = ({ post }) => {
           <CommentForm post={post} />
           <List
             header={`${post.Comments.length}개의 댓글`}
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={post.Comments}
-            renderItem={item => (
+            renderItem={(item) => (
               <li>
                 <Comment
                   author={item.User.nickname}
