@@ -45,7 +45,7 @@ function logOutAPI() {
 
 function* logOut() {
   try {
-    yield call(logOutAPI, action.data);
+    yield call(logOutAPI);
     yield put({
       type: LOG_OUT_SUCCESS,
     });
