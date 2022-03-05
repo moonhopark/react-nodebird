@@ -16,10 +16,10 @@ export const initialState = {
   changeNicknameLoading: false, // 닉네임 변경 시도중
   changeNicknameDone: false,
   changeNicknameError: false,
-  followLoading: false, // 닉네임 변경 시도중
+  followLoading: false, // 팔로우 시도중
   followDone: false,
   followError: false,
-  unfollowLoading: false, // 닉네임 변경 시도중
+  unfollowLoading: false, // 언팔로우 시도중
   unfollowDone: false,
   unfollowError: false,
   me: null,
@@ -57,23 +57,6 @@ export const UNFOLLOW_FAILURE = 'UNFOLLOW_FAILURE';
 
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
-
-const dummyUser = (data) => ({
-  ...data,
-  nickname: '제로초',
-  id: 1,
-  Posts: [{ id: 1 }],
-  Followings: [
-    { nickname: '부기초' },
-    { nickname: 'Chanho Lee' },
-    { nickname: 'neue zeal' },
-  ],
-  Followers: [
-    { nickname: '부기초' },
-    { nickname: 'Chanho Lee' },
-    { nickname: 'neue zeal' },
-  ],
-});
 
 // action creator
 export const loginRequestAction = (data) => {
@@ -113,8 +96,8 @@ const reducer = (state = initialState, action) => {
         break;
       case FOLLOW_SUCCESS:
         draft.followLoading = false;
+        draft.me.Followings.push({ id: action.data.UserId });
         draft.followDone = true;
-        draft.me.Followings.push({ id: action.data });
         break;
       case FOLLOW_FAILURE:
         draft.followLoading = false;
@@ -127,10 +110,10 @@ const reducer = (state = initialState, action) => {
         break;
       case UNFOLLOW_SUCCESS:
         draft.unfollowLoading = false;
-        draft.unfollowDone = true;
         draft.me.Followings = draft.me.Followings.filter(
-          (v) => v.id !== action.data
+          (v) => v.id !== action.data.UserId
         );
+        draft.unfollowDone = true;
         break;
       case UNFOLLOW_FAILURE:
         draft.unfollowLoading = false;
