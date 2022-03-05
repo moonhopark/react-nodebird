@@ -5,6 +5,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const path = require('path');
 
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
@@ -31,6 +32,7 @@ app.use(
     credentials: true,
   })
 );
+app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(

@@ -35,7 +35,7 @@ export const CloseBtn = styled(CloseOutlined)`
 `;
 
 export const SlickWrapper = styled.div`
-  height: calc(100%-44px);
+  height: calc(100% - 44px);
   background: #090909;
 `;
 
@@ -69,7 +69,6 @@ export const Global = createGlobalStyle`
   .slick-slide {
     display: inline-block;
   }
-
   .ant-card-cover {
     transform: none !important;
   }

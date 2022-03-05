@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import Slick from 'react-slick';
-import styled, { createGlobalStyle } from 'styled-components';
-import { CloseOutlined } from '@ant-design/icons';
 
-import { Overlay, Global, Header, CloseBtn, ImgWrapper, Indicator, SlickWrapper } from './styles';
+import {
+  Overlay,
+  Global,
+  Header,
+  CloseBtn,
+  ImgWrapper,
+  Indicator,
+  SlickWrapper,
+} from './styles';
 
 const ImagesZoom = ({ images, onClose }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,15 +25,15 @@ const ImagesZoom = ({ images, onClose }) => {
         <div>
           <Slick
             initialSlide={0}
-            afterChange={slide => setCurrentSlide(slide)}
+            afterChange={(slide) => setCurrentSlide(slide)}
             infinite
             arrows={false}
             slidesToShow={1}
             slidesToScroll={1}
           >
-            {images.map(v => (
+            {images.map((v) => (
               <ImgWrapper key={v.src}>
-                <img src={v.src} alt={v.src} />
+                <img src={`http://localhost:3065/${v.src}`} alt={v.src} />
               </ImgWrapper>
             ))}
           </Slick>
