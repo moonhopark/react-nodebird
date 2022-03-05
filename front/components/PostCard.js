@@ -90,7 +90,7 @@ const PostCard = ({ post }) => {
               </Button.Group>
             }
           >
-            <EllipsisOutlined />,
+            <EllipsisOutlined />
           </Popover>,
         ]}
         extra={id && <FollowButton post={post} />}
