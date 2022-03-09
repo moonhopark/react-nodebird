@@ -1,7 +1,10 @@
 import produce from 'immer';
 
 export const initialState = {
-  loadMyInfoLoading: false, // 유저 정보 가져오기 시도중
+  loadUserLoading: false, // 유저 정보 가져오기 시도중
+  loadUserDone: false,
+  loadUserError: false,
+  loadMyInfoLoading: false, // 로그인 정보 가져오기 시도중
   loadMyInfoDone: false,
   loadMyInfoError: false,
   logInLoading: false, // 로그인 시도중
@@ -34,7 +37,12 @@ export const initialState = {
   me: null,
   signUpData: {},
   loginData: {},
+  userInfo: null,
 };
+
+export const LOAD_USER_REQUEST = 'LOAD_USER_REQUEST';
+export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
+export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 
 export const REMOVE_FOLLOWER_REQUEST = 'REMOVE_FOLLOWER_REQUEST';
 export const REMOVE_FOLLOWER_SUCCESS = 'REMOVE_FOLLOWER_SUCCESS';
@@ -139,6 +147,20 @@ const reducer = (state = initialState, action) => {
       case LOAD_FOLLOWERS_FAILURE:
         draft.loadFollowersLoading = false;
         draft.loadFollowersError = action.error;
+        break;
+      case LOAD_USER_REQUEST:
+        draft.loadUserLoading = true;
+        draft.loadUserError = null;
+        draft.loadUserDone = false;
+        break;
+      case LOAD_USER_SUCCESS:
+        draft.loadUserLoading = false;
+        draft.userInfo = action.data;
+        draft.loadUserDone = true;
+        break;
+      case LOAD_USER_FAILURE:
+        draft.loadUserLoading = false;
+        draft.loadUserError = action.error;
         break;
       case LOAD_MY_INFO_REQUEST:
         draft.loadMyInfoLoading = true;
