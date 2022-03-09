@@ -5,17 +5,16 @@ import user from './user';
 import post from './post';
 
 // (이전상태,액션) => 다음 상태
-const rootReducer = combineReducers({
-  index: (state = {}, action) => {
-    switch (action.type) {
-      case HYDRATE:
-        return { ...state, ...action.payload };
-      default:
-        return state;
+const rootReducer = (state, action) => {
+  switch (action.type) {
+    case HYDRATE:
+      console.log('HYDRATE', action);
+      return action.payload;
+    default: {
+      const combinedReducer = combineReducers({ user, post });
+      return combinedReducer(state, action);
     }
-  },
-  user,
-  post,
-});
+  }
+};
 
 export default rootReducer;
