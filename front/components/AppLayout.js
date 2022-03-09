@@ -29,27 +29,27 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }) => {
-  const { me } = useSelector(state => state.user);
+  const { me } = useSelector((state) => state.user);
 
   return (
     <div>
       <Global />
-      <Menu mode="horizontal">
-        <Menu.Item>
-          <Link href="/">
+      <Menu mode='horizontal'>
+        <Menu.Item key='1'>
+          <Link href='/'>
             <a>노드버드</a>
           </Link>
         </Menu.Item>
-        <Menu.Item>
-          <Link href="/profile">
+        <Menu.Item key='2'>
+          <Link href='/profile'>
             <a>프로필</a>
           </Link>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item key='3'>
           <SearchInput enterButton />
         </Menu.Item>
-        <Menu.Item>
-          <Link href="/signup">
+        <Menu.Item key='4'>
+          <Link href='/signup'>
             <a>회원가입</a>
           </Link>
         </Menu.Item>
@@ -62,7 +62,11 @@ const AppLayout = ({ children }) => {
           {children}
         </Col>
         <Col xs={24} md={6}>
-          <a href="https://www.github.com/moonhopark" target="_blank" rel="noreferrer noopener">
+          <a
+            href='https://www.github.com/moonhopark'
+            target='_blank'
+            rel='noreferrer noopener'
+          >
             Moonhopark's Github
           </a>
         </Col>
