@@ -10,6 +10,7 @@ const NodeBird = ({ Component }) => {
     <>
       <Head>
         <meta charSet='utf-8' />
+        <link rel='shortcut icon' href='/favicon.ico' />
         <title>NodeBird</title>
       </Head>
       <Component />
