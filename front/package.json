@@ -12,6 +12,7 @@
     "@ant-design/icons": "^4.6.2",
     "antd": "^4.16.11",
     "axios": "^0.24.0",
+    "babel-plugin-styled-components": "^2.0.6",
     "faker": "^5.5.3",
     "immer": "^9.0.7",
     "next": "^11.0.1",

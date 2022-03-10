@@ -11,6 +11,7 @@ import FollowList from '../components/FollowList';
 import {
   LOAD_FOLLOWERS_REQUEST,
   LOAD_FOLLOWINGS_REQUEST,
+  LOAD_MY_INFO_REQUEST,
 } from '../reducers/user';
 import wrapper from '../store/configureStore';
 
