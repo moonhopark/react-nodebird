@@ -16,6 +16,10 @@ const Post = () => {
   const { id } = router.query;
   const { singlePost } = useSelector((state) => state.post);
 
+  // if (router.isFallback) {
+  //   return <div>로딩중...</div>;
+  // }
+
   return (
     <AppLayout>
       <Head>
@@ -40,6 +44,17 @@ const Post = () => {
     </AppLayout>
   );
 };
+
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       { params: { id: '1' } },
+//       { params: { id: '2' } },
+//       { params: { id: '3' } },
+//     ],
+//     fallback: true,
+//   };
+// }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
