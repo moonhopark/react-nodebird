@@ -8,11 +8,10 @@
     }
   },
   "env": {
-    "brower": true,
+    "browser": true,
     "node": true,
     "es6": true
   },
-  "extends": ["airbnb"],
   "plugins": ["import", "react-hooks"],
   "rules": {}
 }
