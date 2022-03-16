@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "build": "next build"
+    "build": "cross-env ANALYZE=true NODE_ENV=production next build"
   },
   "author": "moonhopark",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@next/bundle-analyzer": "^12.1.0",
     "antd": "^4.16.11",
     "axios": "^0.24.0",
     "babel-plugin-styled-components": "^2.0.6",
+    "cross-env": "^7.0.3",
     "faker": "^5.5.3",
     "immer": "^9.0.7",
     "moment": "^2.29.1",
