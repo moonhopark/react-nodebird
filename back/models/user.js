@@ -1,29 +1,35 @@
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
-    {
-      // MySQL에서는 users 테이블 생성
-      // id:{}, mysql에서 기본적으로 생성해준다.
-      email: {
-        type: DataTypes.STRING(30),
-        allowNull: false, // 필수
-        unique: true, // 고유한 값
+const DataTypes = require('sequelize');
+const { Model } = DataTypes;
+
+module.exports = class User extends Model {
+  static init(sequelize) {
+    return super.init(
+      {
+        email: {
+          type: DataTypes.STRING(30),
+          allowNull: false, // 필수
+          unique: true, // 고유한 값
+        },
+        nickname: {
+          type: DataTypes.STRING(30),
+          allowNull: false,
+        },
+        password: {
+          type: DataTypes.STRING(100),
+          allowNull: false,
+        },
       },
-      nickname: {
-        type: DataTypes.STRING(30),
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-      },
-    },
-    {
-      charset: 'utf8',
-      collate: 'utf8_general_ci', // 한글 저장
-    }
-  );
-  User.associate = (db) => {
+      {
+        modelName: 'User',
+        tableName: 'users',
+        charset: 'utf8',
+        collate: 'utf8_general_ci',
+        sequelize,
+      }
+    );
+  }
+
+  static associate(db) {
     db.User.hasMany(db.Post);
     db.User.hasMany(db.Comment);
     db.User.belongsToMany(db.Post, { through: 'Like', as: 'Liked' });
@@ -37,6 +43,5 @@ module.exports = (sequelize, DataTypes) => {
       as: 'Followings',
       foreignKey: 'FollowerId',
     });
-  };
-  return User;
+  }
 };
